@@ -33,11 +33,12 @@ export default function Hero() {
         const p = motion.current.progress;
         const pin = section.current?.querySelector('.hero-pin');
         if (pin) {
-          const aperture = smooth(p, .58, .76);
-          const studioFade = 1 - smooth(p, .82, .91);
+          // The room arrives as a physical camera move, not a graphic wipe.
+          const roomIn = smooth(p, .57, .77);
+          const roomOut = 1 - smooth(p, .82, .91);
           if (studioReveal.current) {
-            studioReveal.current.style.opacity = String(aperture * studioFade);
-            studioReveal.current.style.clipPath = `circle(${aperture * 148}% at ${mobile ? '50% 55%' : '62% 51%'})`;
+            studioReveal.current.style.opacity = String(roomIn * roomOut);
+            studioReveal.current.style.transform = `translate3d(${(1 - roomIn) * -12}%, 0, 0) scale(${1.08 - roomIn * .08})`;
           }
           if (workbenchReveal.current) {
             workbenchReveal.current.style.opacity = String(smooth(p, .84, .95));
@@ -56,11 +57,10 @@ export default function Hero() {
       timeline.to(motion.current, { progress: 1, duration: 1, onUpdate: updateFrame }, 0)
         .to('.hero-actions, .hero-bottom', { autoAlpha: 0, duration: .12 }, .13)
         .to('.hero-kicker, .hero-description', { opacity: 0, duration: .10 }, .17)
-        .to('.hero-copy', { left: '50%', xPercent: -50, duration: .18 }, .19)
-        .to('.hero-word-give', { xPercent: -122, yPercent: -58, rotation: -8, opacity: .04, duration: .20 }, .37)
-        .to('.hero-word-it', { xPercent: 142, yPercent: -76, rotation: 7, opacity: .04, duration: .20 }, .37)
-        .to('.hero-word-a', { xPercent: -108, yPercent: 88, rotation: 6, opacity: .04, duration: .20 }, .37)
-        .to('.hero-word-place', { xPercent: 122, yPercent: 74, rotation: -6, opacity: .04, duration: .20 }, .37)
+        .to('.hero-word-give', { xPercent: -26, yPercent: -16, rotation: -4, opacity: .08, duration: .18 }, .36)
+        .to('.hero-word-it', { xPercent: 28, yPercent: -22, rotation: 4, opacity: .08, duration: .18 }, .36)
+        .to('.hero-word-a', { xPercent: -22, yPercent: 28, rotation: 3, opacity: .08, duration: .18 }, .36)
+        .to('.hero-word-place', { xPercent: 25, yPercent: 22, rotation: -3, opacity: .08, duration: .18 }, .36)
         .to('.hero-copy', { opacity: 0, duration: .07 }, .56)
         .to('.hero-edition', { opacity: 0, duration: .12 }, .31)
         .fromTo('.unlock-note', { opacity: 0 }, { opacity: 1, duration: .06 }, .19)
@@ -82,6 +82,8 @@ export default function Hero() {
       motion.current.pointerY = event.clientY / window.innerHeight * 2 - 1;
       motion.current.invalidate?.();
     }} onPointerLeave={() => { motion.current.pointerX = 0; motion.current.pointerY = 0; motion.current.invalidate?.(); }}>
+      <div className="hero-atmosphere" aria-hidden="true" />
+      <div className="machine-orbits" aria-hidden="true"><i /><i /><i /></div>
       <div ref={studioReveal} className="studio-reveal" aria-hidden="true"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /><div className="studio-title"><span className="mono">NOCTURNE / IN THE ROOM</span><strong>There is<br />time here.</strong><p>One chair. One idea.<br />The care it asks for.</p></div></div>
       <div ref={workbenchReveal} className="workbench-reveal" aria-hidden="true"><Image src="/images/hero-workbench.webp" alt="" fill sizes="100vw" /><div className="bench-title"><span className="mono">01 / THE WORK BEGINS BEFORE THE NEEDLE</span><strong>Not rush.<br /><em>Attention.</em></strong></div></div>
       <div className="hero-edition mono" aria-hidden="true">A tattoo house for personal work <span>Appointments by conversation</span></div>

@@ -80,7 +80,8 @@ function Instrument({ motion, registerInvalidate }: SceneProps) {
     const restX=mobile?0:viewportWorld*mix(aspect<1?.18:.335,aspect<1?.12:.225,smooth(p,0,.12))*(1-smooth(p,.18,.55));
     assembly.current.position.set(restX,mobile?mix(-2,0,smooth(p,.12,.34)):.18,0);
     assembly.current.rotation.set(.10+pointer.current.y*.07, -.48+unlock*.32+bodyOpen*.12+pointer.current.x*.1, -.36+unlock*.17);
-    assembly.current.scale.setScalar(mobile?mix(1.5,1.13,smooth(p,.28,.58)):1.15);
+    // Give the opening pose the same visual weight as the reference composition.
+    assembly.current.scale.setScalar(mobile?mix(1.7,1.16,smooth(p,.28,.58)):1.34);
     const refs:Record<PartName,THREE.Group|null>={body:body.current,coilA:coilA.current,coilB:coilB.current,armature:armature.current,grip:grip.current,cartridge:cartridge.current,cam:cam.current,connector:connector.current};
     (Object.keys(refs) as PartName[]).forEach(name=>{
       const group=refs[name]; if(!group)return;
