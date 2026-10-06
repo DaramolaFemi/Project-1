@@ -1,0 +1,238 @@
+[
+  {
+    "name": "initial",
+    "value": {
+      "canvas": false,
+      "overflow": false,
+      "url": "http://127.0.0.1:3000/",
+      "width": 1440
+    }
+  },
+  {
+    "name": "scroll-0",
+    "value": {
+      "copy": "visible",
+      "progress": "0.000",
+      "reveal": "0",
+      "scene": "1",
+      "y": 0
+    }
+  },
+  {
+    "name": "scroll-600",
+    "value": {
+      "copy": "hidden",
+      "progress": "0.300",
+      "reveal": "0",
+      "scene": "1",
+      "y": 600
+    }
+  },
+  {
+    "name": "scroll-1100",
+    "value": {
+      "copy": "hidden",
+      "progress": "0.550",
+      "reveal": "0",
+      "scene": "1",
+      "y": 1100
+    }
+  },
+  {
+    "name": "scroll-1800",
+    "value": {
+      "copy": "hidden",
+      "progress": "0.900",
+      "reveal": "0.5455",
+      "scene": "0.9",
+      "y": 1800
+    }
+  },
+  {
+    "name": "scroll-2000",
+    "value": {
+      "copy": "hidden",
+      "progress": "1.000",
+      "reveal": "1",
+      "scene": "0",
+      "y": 2000
+    }
+  },
+  {
+    "name": "scroll-1100",
+    "value": {
+      "copy": "hidden",
+      "progress": "0.550",
+      "reveal": "0",
+      "scene": "1",
+      "y": 1100
+    }
+  },
+  {
+    "name": "scroll-600",
+    "value": {
+      "copy": "hidden",
+      "progress": "0.300",
+      "reveal": "0",
+      "scene": "1",
+      "y": 600
+    }
+  },
+  {
+    "name": "scroll-0",
+    "value": {
+      "copy": "visible",
+      "progress": "0.000",
+      "reveal": "0",
+      "scene": "1",
+      "y": 0
+    }
+  },
+  {
+    "name": "1440-top",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-studio",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-artists",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-work",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-appointment",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-visit",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "1440-book",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-top",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-studio",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-artists",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-work",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-appointment",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-visit",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "768-book",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-top",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-studio",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-artists",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-work",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-appointment",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-visit",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  },
+  {
+    "name": "390-book",
+    "value": {
+      "loaded": true,
+      "overflow": false
+    }
+  }
+]
