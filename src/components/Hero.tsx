@@ -71,16 +71,16 @@ export default function Hero() {
     }} onPointerLeave={() => { motion.current.pointerX = 0; motion.current.pointerY = 0; motion.current.invalidate?.(); }}>
       <div className="studio-reveal" aria-hidden="true"><div ref={aperture} className="studio-aperture"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /></div></div>
       <span className="reveal-caption" aria-hidden="true">Step inside.</span>
-      <div className="hero-edition mono" aria-hidden="true">Independent tattoo atelier <span>Est. MMXVI</span></div>
+      <div className="hero-edition mono" aria-hidden="true">A tattoo house for personal work <span>Appointments by conversation</span></div>
       <div className="hero-copy">
-        <p className="hero-kicker"><span /> A personal mark. A permanent story.</p>
-        <h1>Made<br />{' '}to stay<span className="period">.</span></h1>
-        <p className="hero-description">Custom tattooing from first thought<br className="desktop-break" /> to final line.</p>
-        <div className="hero-actions"><a className="button button-bone" href="#book">Book a consultation</a><a className="text-link" href="#work">View the work</a></div>
+        <p className="hero-kicker"><span /> Bring us the thought you keep returning to.</p>
+        <h1>Give it<br />a place<span className="period">.</span></h1>
+        <p className="hero-description">Personal tattoos, made with you.<br className="desktop-break" /> From first thought to final line.</p>
+        <div className="hero-actions"><a className="button button-bone" href="#book">Tell us the idea</a><a className="text-link" href="#work">See the work</a></div>
       </div>
       <div className="machine-stage" role="img" aria-label="An original tattoo machine unlocks, its parts open around the camera, and the studio comes into view."><MachineScene key={sceneKey} motion={motion} registerInvalidate={registerInvalidate} /></div>
       <span className="unlock-note mono" aria-hidden="true">01 / cartridge</span>
-      <div className="hero-bottom mono"><a href="#studio">Scroll to open <span className="scroll-line" /></a><p>Considered in every detail.<br />Carried for a lifetime.</p><span>Custom work only</span></div>
+      <div className="hero-bottom mono"><a href="#studio">Come inside <span className="scroll-line" /></a><p>Made for the person.<br />Not the trend.</p><span>By appointment</span></div>
     </div>
   </section>;
 }

@@ -1,9 +1,23 @@
 # Nocturne art direction
 
-The instrument is the opening portrait. Black enamel, machined chrome, two dark coil spools and a long ribbed grip sit against near-black. Large Bodoni copy is left aligned; the instrument occupies the right field on desktop. On mobile the copy sits above a smaller, centered composition with fewer mechanical details and no moving camera.
+## Point of view
 
-Palette: near black #0D0C0B; bone #E8E0D3; ash #A79F93; oxidised blood red #7E2B20; cold metal #A9AFB2. Bodoni Moda display, DM Sans reading text, IBM Plex Mono technical annotations. Fonts are locally bundled.
+Nocturne should feel like a real tattoo house, not a luxury template: a quiet, hands-on place where somebody can bring an unfinished idea and be taken seriously. The writing is plain-spoken and specific. It lets the work carry the poetry; it does not keep describing itself as considered, permanent, personal, or intentional.
 
-Layout: studio image spans the page; artist portraits descend in an asymmetric rhythm with small work crops; a six-image gallery alternates scale and whitespace. A bone-paper appointment section provides a deliberate change in material. The consultation form remains simple and transparent about its demo status.
+## Visual system
 
-Review against brief: avoid repeated marketing cards and decorative UI. The opening mechanical study is the sole elaborate motion treatment. No arrows, sci-fi ornaments, gothic clichés, external 3D models, video, gradients or smooth-scroll libraries. Photography generated as eleven individual assets and inspected before integration.
+The page moves through materials rather than repeating one dark section pattern: deep evergreen for the opening instrument and booking, chalk paper for the studio and visit, muted moss for the artists, warmer paper for the portfolio, and pine green for the process. Copper is reserved for small points of focus. The palette is earthy and legible against the existing warm studio photography.
+
+Bodoni Moda gives display copy a little character; DM Sans stays readable; IBM Plex Mono is limited to practical annotations. The photos remain full-bleed and human-scaled. Gallery images vary in size and placement, but the underlying grid stays consistent. There are no cards, gradients, generic luxury claims, or decorative icon systems.
+
+## Motion and interaction
+
+The exploded tattoo-machine sequence remains the opening signature: one focused scroll-driven scene that resolves into the studio. Lower sections rely on proportion, crop, and whitespace rather than competing animation. The menu, accessible gallery dialog, and portfolio-only enquiry form remain functional. Reduced-motion users get a static opening state.
+
+## Copy system
+
+Talk to the visitor like a person. Make the next step clear. Invite unfinished thoughts; do not promise a feeling or outcome on the visitor's behalf. Do not imply that the demo form sends or stores anything. Studio hours, address, names, and artist biographies are project placeholders until verified.
+
+## Review
+
+Photography is existing project material. Keep it unless the studio supplies authentic portraits or healed work. The site clearly labels its AI-generated photography and portfolio-demo contact details in the footer and form.
