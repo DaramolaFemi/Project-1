@@ -1,0 +1,27 @@
+/* This sheet is scoped to the opening film; all lower-section styling is untouched. */
+.hero-sequence.cinematic-hero{height:350svh}
+.cinematic-hero .hero-pin{min-height:0}
+.cinematic-hero .machine-stage{position:absolute;inset:0;z-index:2;pointer-events:none;cursor:default}
+.cinematic-hero .machine-stage canvas{pointer-events:none}
+.cinematic-hero .studio-reveal{z-index:1;overflow:hidden;opacity:1}
+.cinematic-hero .studio-aperture{position:absolute;left:50%;top:50%;width:100%;height:100%;opacity:0;overflow:hidden;will-change:transform,opacity;transform:translate3d(-50%,-50%,0) scale(.36)}
+.cinematic-hero .studio-aperture img{filter:brightness(.70);object-fit:cover}
+.cinematic-hero .reveal-caption{position:absolute;z-index:4;opacity:0;text-shadow:0 2px 22px #0d0c0b;pointer-events:none}
+.cinematic-hero .hero-copy{z-index:3}
+.cinematic-hero .hero-edition{z-index:3}
+.cinematic-hero .unlock-note{position:absolute;right:25%;bottom:24%;z-index:3;opacity:0;font-size:10px;color:#c0b9ad;pointer-events:none}
+.cinematic-hero .unlock-note:before{content:'';position:absolute;right:calc(100% + 12px);top:50%;width:35px;height:1px;background:#a9afb2}
+@media(min-width:768px) and (max-width:900px){.cinematic-hero .machine-stage{inset:0}.cinematic-hero .hero-copy{max-width:48%}}
+@media(max-width:767px){
+ .hero-sequence.cinematic-hero{height:350svh}
+ .cinematic-hero .hero-pin{height:100svh;min-height:0}
+ .cinematic-hero .machine-stage{inset:0;min-height:0}
+ .cinematic-hero .hero-copy{top:145px}
+ .cinematic-hero .unlock-note{right:13%;bottom:27%;font-size:9px}
+ .cinematic-hero .reveal-caption{bottom:11%;font-size:clamp(58px,15vw,75px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-sequence.cinematic-hero{height:100svh;min-height:740px}
+ .cinematic-hero .hero-pin{height:100svh;min-height:740px}
+ .cinematic-hero .studio-reveal,.cinematic-hero .unlock-note{display:none}
+}
