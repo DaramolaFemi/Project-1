@@ -48,7 +48,7 @@ function Instrument({ motion, registerInvalidate }: SceneProps) {
   const assembly = useRef<THREE.Group>(null);
   const shadow = useRef<THREE.Mesh<THREE.PlaneGeometry,THREE.ShadowMaterial>>(null);
   const pointer = useRef({ x: 0, y: 0 });
-  const { invalidate, camera, gl, size } = useThree();
+  const { invalidate, camera, gl } = useThree();
   const mobile = motion.current.mobile;
   useEffect(() => {
     registerInvalidate(invalidate);
@@ -74,11 +74,9 @@ function Instrument({ motion, registerInvalidate }: SceneProps) {
     pointer.current.x=THREE.MathUtils.lerp(pointer.current.x,m.pointerX*pointerWeight,.075);
     pointer.current.y=THREE.MathUtils.lerp(pointer.current.y,m.pointerY*pointerWeight,.075);
     const perspective=camera as THREE.PerspectiveCamera;
-    const aspect=size.width/size.height;
-    const viewportWorld=2*10.8*Math.tan(THREE.MathUtils.degToRad(40/2))*aspect;
-    // The resting object meets the right edge, then settles in front of the viewer.
-    const restX=mobile?0:viewportWorld*mix(aspect<1?.18:.335,aspect<1?.12:.225,smooth(p,0,.12))*(1-smooth(p,.18,.55));
-    assembly.current.position.set(restX,mobile?mix(-2,0,smooth(p,.12,.34)):.18,0);
+    // The opening begins from the same visual centre as the headline.
+    const restX=0;
+    assembly.current.position.set(restX,mobile?mix(-.95,0,smooth(p,.12,.34)):-.1,0);
     assembly.current.rotation.set(.10+pointer.current.y*.07, -.48+unlock*.32+bodyOpen*.12+pointer.current.x*.1, -.36+unlock*.17);
     assembly.current.scale.setScalar(mobile?mix(1.5,1.13,smooth(p,.28,.58)):1.15);
     const refs:Record<PartName,THREE.Group|null>={body:body.current,coilA:coilA.current,coilB:coilB.current,armature:armature.current,grip:grip.current,cartridge:cartridge.current,cam:cam.current,connector:connector.current};
