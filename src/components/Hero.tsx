@@ -33,17 +33,17 @@ export default function Hero() {
         const p = motion.current.progress;
         const pin = section.current?.querySelector('.hero-pin');
         if (pin) {
-          const aperture = smooth(p, .60, .78);
-          const studioFade = 1 - smooth(p, .84, .92);
+          const aperture = smooth(p, .58, .76);
+          const studioFade = 1 - smooth(p, .82, .91);
           if (studioReveal.current) {
             studioReveal.current.style.opacity = String(aperture * studioFade);
             studioReveal.current.style.clipPath = `circle(${aperture * 148}% at ${mobile ? '50% 55%' : '62% 51%'})`;
           }
           if (workbenchReveal.current) {
-            workbenchReveal.current.style.opacity = String(smooth(p, .86, .96));
+            workbenchReveal.current.style.opacity = String(smooth(p, .84, .95));
           }
           if (machineStage.current) {
-            machineStage.current.style.opacity = String(1 - smooth(p, .69, .84));
+            machineStage.current.style.opacity = String(1 - smooth(p, .65, .81));
           }
         }
         motion.current.invalidate?.();
@@ -54,13 +54,14 @@ export default function Hero() {
         scrollTrigger: { trigger: section.current, start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true, onRefresh: updateFrame },
       });
       timeline.to(motion.current, { progress: 1, duration: 1, onUpdate: updateFrame }, 0)
-        .to('.hero-actions, .hero-bottom', { autoAlpha: 0, duration: .13 }, .10)
-        .to('.hero-word-give', { xPercent: -118, yPercent: -58, rotation: -8, opacity: .04, duration: .23 }, .15)
-        .to('.hero-word-it', { xPercent: 142, yPercent: -76, rotation: 7, opacity: .04, duration: .23 }, .15)
-        .to('.hero-word-a', { xPercent: -106, yPercent: 88, rotation: 6, opacity: .04, duration: .23 }, .15)
-        .to('.hero-word-place', { xPercent: 122, yPercent: 74, rotation: -6, opacity: .04, duration: .23 }, .15)
-        .to('.hero-kicker, .hero-description', { opacity: 0, duration: .12 }, .16)
-        .to('.hero-copy', { opacity: 0, duration: .08 }, .39)
+        .to('.hero-actions, .hero-bottom', { autoAlpha: 0, duration: .12 }, .13)
+        .to('.hero-kicker, .hero-description', { opacity: 0, duration: .10 }, .17)
+        .to('.hero-copy', { left: '50%', xPercent: -50, duration: .18 }, .19)
+        .to('.hero-word-give', { xPercent: -122, yPercent: -58, rotation: -8, opacity: .04, duration: .20 }, .37)
+        .to('.hero-word-it', { xPercent: 142, yPercent: -76, rotation: 7, opacity: .04, duration: .20 }, .37)
+        .to('.hero-word-a', { xPercent: -108, yPercent: 88, rotation: 6, opacity: .04, duration: .20 }, .37)
+        .to('.hero-word-place', { xPercent: 122, yPercent: 74, rotation: -6, opacity: .04, duration: .20 }, .37)
+        .to('.hero-copy', { opacity: 0, duration: .07 }, .56)
         .to('.hero-edition', { opacity: 0, duration: .12 }, .31)
         .fromTo('.unlock-note', { opacity: 0 }, { opacity: 1, duration: .06 }, .19)
         .to('.unlock-note', { opacity: 0, duration: .09 }, .28)
@@ -81,13 +82,12 @@ export default function Hero() {
       motion.current.pointerY = event.clientY / window.innerHeight * 2 - 1;
       motion.current.invalidate?.();
     }} onPointerLeave={() => { motion.current.pointerX = 0; motion.current.pointerY = 0; motion.current.invalidate?.(); }}>
-      <div className="hero-atmosphere" aria-hidden="true"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /></div>
       <div ref={studioReveal} className="studio-reveal" aria-hidden="true"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /><div className="studio-title"><span className="mono">NOCTURNE / IN THE ROOM</span><strong>There is<br />time here.</strong><p>One chair. One idea.<br />The care it asks for.</p></div></div>
       <div ref={workbenchReveal} className="workbench-reveal" aria-hidden="true"><Image src="/images/hero-workbench.webp" alt="" fill sizes="100vw" /><div className="bench-title"><span className="mono">01 / THE WORK BEGINS BEFORE THE NEEDLE</span><strong>Not rush.<br /><em>Attention.</em></strong></div></div>
       <div className="hero-edition mono" aria-hidden="true">A tattoo house for personal work <span>Appointments by conversation</span></div>
       <div className="hero-copy">
         <p className="hero-kicker"><span /> Bring us the thought you keep returning to.</p>
-        <h1 className="hero-title"><span className="hero-word hero-word-give">Give</span><span className="hero-word hero-word-it">it</span><span className="hero-word hero-word-a">a</span><span className="hero-word hero-word-place">place<span className="period">.</span></span></h1>
+        <h1 className="hero-title"><span className="hero-word hero-word-give">Give</span>{' '}<span className="hero-word hero-word-it">it</span><br /><span className="hero-word hero-word-a">a</span>{' '}<span className="hero-word hero-word-place">place<span className="period">.</span></span></h1>
         <p className="hero-description">Personal tattoos, made with you.<br className="desktop-break" /> From first thought to final line.</p>
         <div className="hero-actions"><a className="button button-bone" href="#book">Tell us the idea</a><a className="text-link" href="#work">See the work</a></div>
       </div>
