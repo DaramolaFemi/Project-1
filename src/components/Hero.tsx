@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cameraPose, smooth } from './hero-motion';
+import { smooth } from './hero-motion';
 import type { InstrumentState } from './MachineScene';
 import './hero.css';
 
@@ -13,7 +13,9 @@ const MachineScene = dynamic(() => import('./MachineScene'), { ssr: false, loadi
 
 export default function Hero() {
   const section = useRef<HTMLElement>(null);
-  const aperture = useRef<HTMLDivElement>(null);
+  const studioReveal = useRef<HTMLDivElement>(null);
+  const workbenchReveal = useRef<HTMLDivElement>(null);
+  const machineStage = useRef<HTMLDivElement>(null);
   const motion = useRef<InstrumentState>({ progress: 0, pointerX: 0, pointerY: 0, mobile: false, reduced: false, invalidate: null });
   const registerInvalidate = useCallback((invalidate: (() => void) | null) => { motion.current.invalidate = invalidate; }, []);
   const [sceneKey, setSceneKey] = useState('initial');
@@ -29,17 +31,20 @@ export default function Hero() {
       if (reduced) return;
       const updateFrame = () => {
         const p = motion.current.progress;
-        const element = aperture.current;
         const pin = section.current?.querySelector('.hero-pin');
-        if (element && pin) {
-          const view = pin.getBoundingClientRect();
-          const camera = cameraPose(p, !!mobile);
-          const distance = Math.max(1.1, camera.z + 7);
-          const visibleWorldHeight = 2 * distance * Math.tan(camera.fov * Math.PI / 360);
-          const scale = (mobile ? 4.1 : 3.05) / visibleWorldHeight;
-          const lateralShift = -camera.x / visibleWorldHeight * view.height;
-          element.style.transform = `translate3d(calc(-50% + ${lateralShift}px),-50%,0) scale(${scale})`;
-          element.style.opacity = String(smooth(p, .58, .66));
+        if (pin) {
+          const aperture = smooth(p, .53, .74);
+          const studioFade = 1 - smooth(p, .80, .90);
+          if (studioReveal.current) {
+            studioReveal.current.style.opacity = String(aperture * studioFade);
+            studioReveal.current.style.clipPath = `circle(${aperture * 148}% at ${mobile ? '50% 55%' : '62% 51%'})`;
+          }
+          if (workbenchReveal.current) {
+            workbenchReveal.current.style.opacity = String(smooth(p, .82, .94));
+          }
+          if (machineStage.current) {
+            machineStage.current.style.opacity = String(1 - smooth(p, .57, .76));
+          }
         }
         motion.current.invalidate?.();
         if (section.current) section.current.dataset.progress = p.toFixed(3);
@@ -54,7 +59,9 @@ export default function Hero() {
         .to('.hero-edition', { opacity: 0, duration: .12 }, .31)
         .fromTo('.unlock-note', { opacity: 0 }, { opacity: 1, duration: .06 }, .19)
         .to('.unlock-note', { opacity: 0, duration: .09 }, .28)
-        .fromTo('.reveal-caption', { opacity: 0 }, { opacity: 1, duration: .07 }, .93);
+        .fromTo('.studio-title', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .09 }, .68)
+        .to('.studio-title', { opacity: 0, duration: .06 }, .82)
+        .fromTo('.bench-title', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .08 }, .90);
       let active = true;
       const refresh = () => { if (active) ScrollTrigger.refresh(); };
       document.fonts.ready.then(refresh);
@@ -69,8 +76,8 @@ export default function Hero() {
       motion.current.pointerY = event.clientY / window.innerHeight * 2 - 1;
       motion.current.invalidate?.();
     }} onPointerLeave={() => { motion.current.pointerX = 0; motion.current.pointerY = 0; motion.current.invalidate?.(); }}>
-      <div className="studio-reveal" aria-hidden="true"><div ref={aperture} className="studio-aperture"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /></div></div>
-      <span className="reveal-caption" aria-hidden="true">Step inside.</span>
+      <div ref={studioReveal} className="studio-reveal" aria-hidden="true"><Image src="/images/studio.webp" alt="" fill sizes="100vw" preload /><div className="studio-title"><span className="mono">NOCTURNE / IN THE ROOM</span><strong>There is<br />time here.</strong><p>One chair. One idea.<br />The care it asks for.</p></div></div>
+      <div ref={workbenchReveal} className="workbench-reveal" aria-hidden="true"><Image src="/images/hero-workbench.webp" alt="" fill sizes="100vw" /><div className="bench-title"><span className="mono">01 / THE WORK BEGINS BEFORE THE NEEDLE</span><strong>Not rush.<br /><em>Attention.</em></strong></div></div>
       <div className="hero-edition mono" aria-hidden="true">A tattoo house for personal work <span>Appointments by conversation</span></div>
       <div className="hero-copy">
         <p className="hero-kicker"><span /> Bring us the thought you keep returning to.</p>
@@ -78,7 +85,7 @@ export default function Hero() {
         <p className="hero-description">Personal tattoos, made with you.<br className="desktop-break" /> From first thought to final line.</p>
         <div className="hero-actions"><a className="button button-bone" href="#book">Tell us the idea</a><a className="text-link" href="#work">See the work</a></div>
       </div>
-      <div className="machine-stage" role="img" aria-label="An original tattoo machine unlocks, its parts open around the camera, and the studio comes into view."><MachineScene key={sceneKey} motion={motion} registerInvalidate={registerInvalidate} /></div>
+      <div ref={machineStage} className="machine-stage" role="img" aria-label="An original tattoo machine unlocks, its parts open around the camera, and the studio comes into view."><MachineScene key={sceneKey} motion={motion} registerInvalidate={registerInvalidate} /></div>
       <span className="unlock-note mono" aria-hidden="true">01 / cartridge</span>
       <div className="hero-bottom mono"><a href="#studio">Come inside <span className="scroll-line" /></a><p>Made for the person.<br />Not the trend.</p><span>By appointment</span></div>
     </div>
