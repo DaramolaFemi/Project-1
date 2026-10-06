@@ -12,7 +12,9 @@ export default function Header() {
   }, [open]);
   return <><a className="skip-link" href="#studio">Skip introduction</a><header className="site-header">
     <a href="#top" className="wordmark" aria-label="Nocturne Tattoo House home">NOCTURNE<span>TATTOO HOUSE</span></a>
-    <button ref={toggle} className="menu-toggle" aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(!open)}>{open ? 'Close' : 'Menu'}</button>
+    <button ref={toggle} className={open ? 'menu-toggle is-open' : 'menu-toggle'} aria-expanded={open} aria-controls="main-navigation" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>
+      <span className="menu-mark" aria-hidden="true"><i /><i /></span>
+    </button>
     <nav id="main-navigation" aria-label="Main navigation" className={open ? 'navigation is-open' : 'navigation'}>{links.map(label => <a key={label} href={`#${label.toLowerCase()}`} onClick={() => setOpen(false)}>{label}</a>)}<a className="nav-book" href="#book" onClick={() => setOpen(false)}>Book <span className="nav-dot" /></a></nav>
   </header></>;
 }
