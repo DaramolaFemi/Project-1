@@ -111,7 +111,7 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
 .studio-statement p:not(.lead) { color: #4e584e; font-size: 14px; line-height: 1.84; }
 .studio-statement p + p { margin-top: 16px; }
 .studio-images { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(210px, .78fr); gap: clamp(12px, 2vw, 32px); align-items: end; }
-.studio-photo { position: relative; overflow: hidden; background: #b9ac98; }
+.studio-photo { position: relative; overflow: hidden; background: #b9ac98; outline: 1px solid rgba(57, 94, 68, .72); outline-offset: 4px; box-shadow: 0 0 0 1px rgba(81, 117, 90, .2), 0 18px 54px rgba(22, 62, 36, .2), 0 0 42px rgba(65, 112, 77, .17); }
 .studio-photo-primary { aspect-ratio: 1.48 / 1; }
 .studio-photo-detail { aspect-ratio: .7 / 1; margin-bottom: clamp(28px, 5.5vw, 100px); }
 .studio-photo::after { position: absolute; inset: 0; background: rgba(21, 26, 20, .12); content: ''; pointer-events: none; }
