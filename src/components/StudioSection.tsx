@@ -1,32 +1,8 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 export default function StudioSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      section.classList.add('is-in-view');
-      return;
-    }
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      section.classList.add('is-in-view');
-      observer.disconnect();
-    }, { threshold: 0.16 });
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="studio" className="studio">
+    <section id="studio" className="studio">
       <div className="section-wrap studio-wrap">
         <div className="section-heading">
           <p className="section-label">The house</p>
@@ -42,10 +18,16 @@ export default function StudioSection() {
           </div>
         </div>
 
-        <figure className="studio-photo">
-          <Image src="/images/studio-cinematic.webp" alt="A sunlit tattoo chair in a working atelier, with sketches, ink, plants and an artist preparing the room" fill sizes="(max-width: 767px) 100vw, 92vw" />
-          <figcaption className="photo-note">A look around the studio.</figcaption>
-        </figure>
+        <div className="studio-images">
+          <figure className="studio-photo studio-photo-primary">
+            <Image src="/images/studio-cinematic.webp" alt="A sunlit tattoo chair in a working atelier, with sketches, ink, plants and an artist preparing the room" fill sizes="(max-width: 767px) 92vw, 66vw" />
+            <figcaption className="photo-note">A look around the studio.</figcaption>
+          </figure>
+          <figure className="studio-photo studio-photo-detail">
+            <Image src="/images/studio.webp" alt="Tattoo chairs and afternoon light inside the studio" fill sizes="(max-width: 767px) 42vw, 27vw" />
+            <figcaption className="studio-image-index mono">01 / the room</figcaption>
+          </figure>
+        </div>
 
         <div className="studio-foot mono"><span>One client at a time</span><span>By appointment</span></div>
       </div>
