@@ -43,7 +43,7 @@ export default function StudioSection() {
         </div>
 
         <figure className="studio-photo">
-          <Image src="/images/studio.webp" alt="A quiet tattoo atelier with worn timber floors, black leather chairs and afternoon light through industrial windows" fill sizes="(max-width: 767px) 100vw, 92vw" />
+          <Image src="/images/studio-cinematic.webp" alt="A sunlit tattoo chair in a working atelier, with sketches, ink, plants and an artist preparing the room" fill sizes="(max-width: 767px) 100vw, 92vw" />
           <figcaption className="photo-note">A look around the studio.</figcaption>
         </figure>
 
