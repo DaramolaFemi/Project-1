@@ -76,11 +76,12 @@ function Instrument({ motion, registerInvalidate }: SceneProps) {
     const perspective=camera as THREE.PerspectiveCamera;
     const aspect=size.width/size.height;
     const viewportWorld=2*10.8*Math.tan(THREE.MathUtils.degToRad(40/2))*aspect;
-    // The resting object meets the right edge, then settles in front of the viewer.
+    // It begins beside the copy, then travels into the centre before it opens.
     const restX=mobile?0:viewportWorld*mix(aspect<1?.18:.335,aspect<1?.12:.225,smooth(p,0,.12))*(1-smooth(p,.18,.55));
     assembly.current.position.set(restX,mobile?mix(-2,0,smooth(p,.12,.34)):.18,0);
     assembly.current.rotation.set(.10+pointer.current.y*.07, -.48+unlock*.32+bodyOpen*.12+pointer.current.x*.1, -.36+unlock*.17);
-    assembly.current.scale.setScalar(mobile?mix(1.5,1.13,smooth(p,.28,.58)):1.15);
+    // Give the opening pose the same visual weight as the reference composition.
+    assembly.current.scale.setScalar(mobile?mix(1.7,1.16,smooth(p,.28,.58)):1.34);
     const refs:Record<PartName,THREE.Group|null>={body:body.current,coilA:coilA.current,coilB:coilB.current,armature:armature.current,grip:grip.current,cartridge:cartridge.current,cam:cam.current,connector:connector.current};
     (Object.keys(refs) as PartName[]).forEach(name=>{
       const group=refs[name]; if(!group)return;
@@ -154,16 +155,16 @@ function Instrument({ motion, registerInvalidate }: SceneProps) {
 class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
-  render() { return this.state.failed ? <div className="scene-fallback"><span>Black enamel. Cold steel.</span><p>Precision in every part.</p></div> : this.props.children; }
+  render() { return this.state.failed ? <div className="scene-fallback"><span>Made of steel and enamel.</span><p>Every part has a purpose.</p></div> : this.props.children; }
 }
 export default function MachineScene({ motion, registerInvalidate }: SceneProps) {
   return <SceneBoundary><Canvas frameloop="demand" dpr={[1, motion.current.mobile ? 1.25 : 1.5]} shadows={!motion.current.mobile} camera={{ position: [0, .1, 10.8], fov: 40, near: .05, far: 60 }} gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }} fallback={<div className="scene-fallback"><p>Precision in every part.</p><span>Black enamel. Cold steel.</span></div>}>
     <ambientLight intensity={.26} />
     <directionalLight castShadow={!motion.current.mobile} shadow-mapSize={[512,512]} shadow-camera-left={-8} shadow-camera-right={8} shadow-camera-top={8} shadow-camera-bottom={-8} position={[3, 5, 6]} intensity={3.5} color="#e9e2d7" />
-    <directionalLight position={[-4, 1, -2]} intensity={4} color="#c5cbd2" />
+    <directionalLight position={[-4, 1, -2]} intensity={3.2} color="#b7c1ad" />
     <Environment resolution={128}>
       <Lightformer form="rect" intensity={5} color="#ffffff" position={[-3, 2, 3]} scale={[2, 6, 1]} rotation={[0, .5, 0]} />
-      <Lightformer form="rect" intensity={3} color="#b7c4cf" position={[3, 1, 1]} scale={[1, 5, 1]} rotation={[0, -.7, 0]} />
+      <Lightformer form="rect" intensity={3} color="#9ca98f" position={[3, 1, 1]} scale={[1, 5, 1]} rotation={[0, -.7, 0]} />
       <Lightformer form="rect" intensity={4} color="#e7ddd0" position={[0, 5, 0]} scale={[5, 1, 1]} rotation={[Math.PI / 2, 0, 0]} />
     </Environment>
     <Instrument motion={motion} registerInvalidate={registerInvalidate} />

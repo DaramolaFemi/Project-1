@@ -3,23 +3,36 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Gallery from '@/components/Gallery';
 import BookingForm from '@/components/BookingForm';
-const artists = [
-  { id: 'amara', name: 'Amara Vale', specialty: 'Fine line / botanical', work: 'botanical', description: 'Drawn from nature, made for the body. Amara works with delicate line, patient detail, and the space between.', sample: 'Fine botanical linework on a forearm' },
-  { id: 'eli', name: 'Eli Mercer', specialty: 'Blackwork / illustrative', work: 'moth', description: 'A printmaker’s eye for contrast. Eli builds character through strong silhouettes, rich black, and considered texture.', sample: 'A detailed blackwork moth on an upper arm' },
-  { id: 'santi', name: 'Santi Reyes', specialty: 'Colour / neo-traditional', work: 'peony', description: 'Bold forms with a softer palette. Santi brings a painter’s attention to colour and a respect for traditional drawing.', sample: 'A burgundy neo-traditional peony on brown skin' },
-];
+import StudioSection from '@/components/StudioSection';
+import ArtistsSection from '@/components/ArtistsSection';
+import VisitSection from '@/components/VisitSection';
 export default function Home() {
-  return <><Header /><main><Hero />
-    <section id="studio" className="studio section-wrap">
-      <div className="section-heading"><p className="section-label">The house</p><span className="mono">A space to make something personal.</span></div>
-      <div className="studio-statement"><h2>Nothing here<br />is rushed.</h2><div><p className="lead">Every piece begins with a conversation, then becomes a permanent decision.</p><p>We’re a small, independent atelier built around the relationship between artist and wearer. Time to listen. Space to think. Work that belongs to you.</p><p>From the first sketch to the last line, you have our full attention.</p></div></div>
-      <figure className="studio-photo"><Image src="/images/studio.webp" alt="A quiet tattoo atelier with worn timber floors, black leather chairs and afternoon light through industrial windows" fill sizes="(max-width: 767px) 100vw, 92vw" /><figcaption className="photo-note">The house, in the afternoon.</figcaption></figure>
-      <div className="studio-foot mono"><span>Private sessions. Shared intention.</span><span>By appointment</span></div>
-    </section>
-    <section id="artists" className="artists section-wrap"><div className="section-heading"><p className="section-label">Resident artists</p><span className="mono">Three hands. Distinct signatures.</span></div><div className="artists-intro"><h2>Find your<br />kind of artist.</h2><p>Different disciplines.<br />The same care for the work.</p></div><div className="artist-layout">{artists.map(artist => <article key={artist.id} className={`artist artist-${artist.id}`}><div className="artist-portrait"><Image src={`/images/${artist.id}.webp`} alt={`${artist.name}, resident tattoo artist, photographed candidly in the studio`} fill sizes="(max-width: 600px) 80vw, (max-width: 1000px) 43vw, 30vw" /><a href="#work" className="artist-sample" aria-label={`Explore ${artist.name}'s work`}><Image src={`/images/work-${artist.work}.webp`} alt={artist.sample} fill sizes="(max-width: 600px) 28vw, 14vw" /><span>View work</span></a></div><div className="artist-info"><p className="mono specialty">{artist.specialty}</p><h3>{artist.name}</h3><p>{artist.description}</p><a href="#book" className="text-link">Consult with {artist.name.split(' ')[0]}</a></div></article>)}</div></section>
-    <section id="work" className="selected-work section-wrap"><div className="section-heading"><p className="section-label">Selected work</p><span className="mono">On skin. In time.</span></div><div className="work-intro"><h2>A part of<br />someone.</h2><p>Personal pieces, seen up close.<br />A study in line, colour, and permanence.</p></div><Gallery /><p className="gallery-end mono">Every body is different. Every piece should be, too.</p></section>
-    <section className="appointment" id="appointment"><div className="section-wrap"><div className="section-heading"><p className="section-label">The appointment</p><span className="mono">From a thought to a part of you.</span></div><div className="appointment-layout"><h2>Good work<br />takes its time.</h2><div className="steps"><article><span className="step-number mono">01</span><div><h3>Consult</h3><p>Bring a thought, a reference, or simply a feeling. We’ll talk about placement, scale, and the artist best suited to your piece.</p></div></article><article><span className="step-number mono">02</span><div><h3>Design</h3><p>Your artist develops a drawing for your body. We refine it together until every detail feels right.</p></div></article><article><span className="step-number mono">03</span><div><h3>Session</h3><p>A private appointment, at your pace. We make the piece, walk you through aftercare, and stay in touch as it heals.</p></div></article></div></div><div className="appointment-bottom"><span>No pressure. No borrowed designs.</span><a className="button button-dark" href="#book">Begin a conversation</a></div></div></section>
-    <section id="visit" className="visit section-wrap"><div className="section-heading"><p className="section-label">Visit the house</p><span className="mono">A little away from the noise.</span></div><div className="visit-layout"><div className="visit-image"><Image src="/images/visit.webp" alt="An open botanical sketchbook on a worn oak consultation table beside a tall studio window" fill sizes="(max-width: 767px) 92vw, 55vw" /></div><div className="visit-copy"><h2>Come<br />as you are.</h2><p>A quiet room. An open conversation.<br />There’s no need to have it all figured out.</p><div className="visit-details"><div><h3>Find us</h3><address>Studio address to be announced<br />Visits by appointment only</address></div><div><h3>Studio hours</h3><p>Tuesday–Saturday<br />11:00–19:00</p></div><div className="visit-email"><h3>Write to us</h3><p>booking@nocturne.example</p><span className="mono">Demo contact</span></div></div></div></div></section>
-    <section id="book" className="booking section-wrap"><div className="booking-intro"><p className="section-label">Book a consultation</p><h2>Tell us<br />what stays.</h2><p>A small beginning for something permanent.</p></div><BookingForm /></section>
-  </main><footer className="footer section-wrap"><div className="footer-top"><a className="wordmark" href="#top">NOCTURNE<span>TATTOO HOUSE</span></a><p>Made with intention.<br />Made to stay.</p><a className="text-link" href="#top">Back to the beginning</a></div><div className="footer-bottom mono"><span>© 2026 Nocturne Tattoo House</span><span>Independent portfolio concept. AI-generated photography.</span><span>For the long run.</span></div></footer></>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <StudioSection />
+        <ArtistsSection />
+        <section id="work" className="selected-work section-wrap">
+          <div className="section-heading"><p className="section-label">On the skin</p><span className="mono">A small tattoo atlas / 01—06</span></div>
+          <div className="work-intro"><h2>Drawn for<br />a body.</h2><p>Every piece begins with a person, then finds the line only their body can hold. No flash sheets. No second copies.</p></div>
+          <Gallery />
+          <p className="gallery-end mono">Open a tattoo note for its artist, placement, and the thinking behind it.</p>
+        </section>
+        <section className="appointment" id="appointment">
+          <Image className="appointment-backdrop" src="/images/process-desk-light.webp" alt="" fill sizes="100vw" />
+          <div className="appointment-wash" aria-hidden="true" />
+          <div className="section-wrap appointment-wrap">
+            <div className="section-heading"><p className="section-label">How it happens</p><span className="mono">A clear process. Room to think.</span></div>
+            <div className="appointment-layout"><h2>We start<br />with a talk.</h2><div className="steps"><article><span className="step-number">I</span><div><h3>Tell us the idea</h3><p>Bring a reference, a rough sketch, a place, a person, or just a few words. We can work with a beginning.</p></div></article><article><span className="step-number">II</span><div><h3>Draw it together</h3><p>Your artist designs for your body, not a blank page. We make changes with you until the piece feels right.</p></div></article><article><span className="step-number">III</span><div><h3>Make a day of it</h3><p>We set aside time for one client at a time. You leave with clear aftercare and a way to reach us while it heals.</p></div></article></div></div>
+            <div className="appointment-bottom"><span>No borrowed designs. No need to decide today.</span><a className="button button-dark" href="#book">Tell us your idea</a></div>
+          </div>
+        </section>
+        <VisitSection />
+        <section id="book" className="booking section-wrap"><div className="booking-intro"><p className="section-label">Start here</p><h2>What have<br />you been<br />thinking about?</h2><p>A few lines is plenty. We’ll take it from there.</p></div><BookingForm /></section>
+      </main>
+      <footer className="footer"><div className="footer-inner section-wrap"><a className="footer-wordmark" href="#top">NOCTURNE<span>TATTOO HOUSE</span></a><p className="footer-statement">Bring the idea.<br />We’ll make room for it.</p><a className="footer-conversation" href="#book"><span className="footer-marker" aria-hidden="true" /><span className="footer-conversation-title">Start the conversation</span><span className="footer-conversation-copy mono">Personal tattoos, made with you.<br />From first thought to final line.</span></a><div className="footer-meta mono"><span>© 2026 Nocturne Tattoo House</span><span>Private work. By appointment.</span><a href="#top">Back to the top <i aria-hidden="true" /></a></div></div></footer>
+    </>
+  );
 }

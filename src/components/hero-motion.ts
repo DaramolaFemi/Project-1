@@ -37,8 +37,8 @@ export function partPose(name: PartName, p: number, mobile: boolean) {
 export function cameraPose(p: number, mobile: boolean) {
   const unlock = smooth(p,.12,.28);
   const rupture = smooth(p,.28,.55);
-  const passage = smooth(p,.55,.94);
-  const z = mobile ? 11.8 - unlock*3.1 - rupture*1.3 - passage*12.3 : 10.8 - unlock*3.3 - rupture*1.2 - passage*12;
+  const passage = smooth(p,.55,.77);
+  const z = mobile ? 11.8 - unlock*3.1 - rupture*1.3 - passage*8.2 : 10.8 - unlock*3.3 - rupture*1.2 - passage*8;
   const orbit = Math.sin(smooth(p,.28,.94)*Math.PI);
   return { x: mobile ? orbit*.13 : orbit*.42, y: mobile ? 0 : .15+orbit*.2, z, fov: mobile ? 40+passage*4 : 40-unlock*3+passage*7, roll: mobile ? 0 : Math.sin(p*Math.PI)*.025 };
 }
