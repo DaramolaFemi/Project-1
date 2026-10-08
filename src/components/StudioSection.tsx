@@ -1,8 +1,28 @@
+ 'use client';
+
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 export default function StudioSection() {
+  const section = useRef<HTMLElement>(null);
+  const images = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const current = section.current;
+    const imageStage = images.current;
+    if (!current || !imageStage) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        current.classList.add('is-visible');
+        observer.disconnect();
+      }
+    }, { threshold: .14, rootMargin: '0px 0px -9%' });
+    observer.observe(imageStage);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="studio" className="studio">
+    <section ref={section} id="studio" className="studio">
       <div className="section-wrap studio-wrap">
         <div className="section-heading">
           <p className="section-label">The house</p>
@@ -18,9 +38,13 @@ export default function StudioSection() {
           </div>
         </div>
 
-        <div className="studio-images">
+        <div ref={images} className="studio-images">
           <figure className="studio-photo studio-photo-primary">
             <Image src="/images/studio-cinematic.webp" alt="A sunlit tattoo chair in a working atelier, with sketches, ink, plants and an artist preparing the room" fill sizes="(max-width: 767px) 92vw, 66vw" />
+            <div className="studio-film-strip" aria-hidden="true">
+              <span><Image src="/images/studio.webp" alt="" fill sizes="110px" /></span>
+              <span><Image src="/images/hero-workbench.webp" alt="" fill sizes="110px" /></span>
+            </div>
             <figcaption className="photo-note">A look around the studio.</figcaption>
           </figure>
           <figure className="studio-photo studio-photo-detail">
