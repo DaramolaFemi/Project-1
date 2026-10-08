@@ -11,14 +11,44 @@ export default function StudioSection() {
     const current = section.current;
     const imageStage = images.current;
     if (!current || !imageStage) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const updateDetailMotion = () => {
+      frame = 0;
+      if (reducedMotion.matches) return;
+      const bounds = imageStage.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (viewHeight * .88 - bounds.top) / (bounds.height * .7 + viewHeight * .18)));
+      const detailProgress = Math.min(1, progress * 1.45);
+      const compact = window.matchMedia('(max-width: 767px)').matches;
+      imageStage.style.setProperty('--detail-progress', String(detailProgress));
+      imageStage.style.setProperty('--detail-x', `${(1 - detailProgress) * (compact ? 66 : 72)}px`);
+      imageStage.style.setProperty('--detail-y', `${(1 - detailProgress) * (compact ? 86 : 72)}px`);
+      imageStage.style.setProperty('--detail-rotation', `${(1 - detailProgress) * 6}deg`);
+      imageStage.style.setProperty('--detail-scale', String((compact ? .68 : .72) + detailProgress * (compact ? .56 : .28)));
+    };
+    const requestDetailMotion = () => {
+      if (!frame) frame = requestAnimationFrame(updateDetailMotion);
+    };
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         current.classList.add('is-visible');
         observer.disconnect();
       }
     }, { threshold: .14, rootMargin: '0px 0px -9%' });
+    current.classList.add('studio-motion-ready');
     observer.observe(imageStage);
-    return () => observer.disconnect();
+    updateDetailMotion();
+    window.addEventListener('scroll', requestDetailMotion, { passive: true });
+    window.addEventListener('resize', requestDetailMotion);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', requestDetailMotion);
+      window.removeEventListener('resize', requestDetailMotion);
+      current.classList.remove('studio-motion-ready');
+    };
   }, []);
 
   return (
