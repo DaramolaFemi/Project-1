@@ -27,11 +27,13 @@ export default function VisitSection() {
 
   return <section ref={section} id="visit" className="visit">
     <div className="section-wrap visit-wrap">
-      <div data-visit-reveal className="section-heading visit-heading"><p className="section-label">Come by</p><span className="mono">The room, before the appointment.</span></div>
-      <div data-visit-reveal className="visit-intro"><h2>Come in before<br />you decide<span className="period">.</span></h2><p>You do not need a finished design for the first conversation. Bring the reference, the memory, the question—or nothing at all.</p></div>
-      <div className="visit-stage">
+      <div className="visit-top">
+        <div className="visit-copy">
+          <div data-visit-reveal className="section-heading visit-heading"><p className="section-label">Come by</p><span className="mono">The room, before the appointment.</span></div>
+          <div data-visit-reveal className="visit-intro"><h2>Come in before<br />you decide<span className="period">.</span></h2><p>You do not need a finished design for the first conversation. Bring the reference, the memory, the question—or nothing at all.</p></div>
+        </div>
         <figure data-visit-reveal className="visit-image">
-          <Image src="/images/visit.webp" alt="An open botanical sketchbook on a worn oak consultation table beside a tall studio window" fill sizes="(max-width: 767px) 92vw, 68vw" />
+          <Image src="/images/visit.webp" alt="An open botanical sketchbook on a worn oak consultation table beside a tall studio window" fill sizes="(max-width: 767px) 92vw, 52vw" />
           <figcaption className="visit-image-note mono">The consultation table / a place to begin</figcaption>
         </figure>
         <aside data-visit-reveal className="visit-note">
