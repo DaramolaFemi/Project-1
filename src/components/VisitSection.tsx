@@ -44,8 +44,8 @@ export default function VisitSection() {
       <div data-visit-reveal className="visit-details">
         <div><span className="mono">Visit</span><p>By appointment only<br />Lagos, Nigeria</p></div>
         <div><span className="mono">Hours</span><p>Tuesday—Saturday<br />11:00—19:00</p></div>
-        <div><span className="mono">Write</span><a href="mailto:booking@nocturne.example">booking@nocturne.example</a></div>
-        <a className="visit-book" href="#book"><span>Start the conversation</span><b className="mono">IV</b></a>
+        <div><span className="mono">Enquiries</span><a href="#book">Use the request form</a></div>
+        <a className="visit-book" href="#book"><span>Start the conversation</span></a>
       </div>
     </div>
   </section>;

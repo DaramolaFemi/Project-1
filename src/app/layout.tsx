@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Nocturne Tattoo House — Give it a place.',
   description: 'Personal tattoos, made with you. See the work, meet the artists, and tell us the idea you keep returning to.',
   openGraph: { title: 'Nocturne Tattoo House — Give it a place.', description: 'Personal tattoos, made with you. From first thought to final line.', images: [{ url: '/images/studio.webp', width: 1536, height: 1024 }] },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 export const viewport: Viewport = { themeColor: '#17211B' };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
