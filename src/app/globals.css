@@ -327,6 +327,8 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
   .artist-info h3 { font-size: 37px; }
   .artists-intro > p { max-width: 210px; }
   .appointment-layout { grid-template-columns: 1fr 1fr; gap: 6%; }
+  .appointment-backdrop { object-position: 78% center; }
+  .appointment-wash { background: linear-gradient(90deg, rgba(4, 20, 13, .98) 0%, rgba(4, 20, 13, .92) 45%, rgba(4, 20, 13, .5) 72%, rgba(4, 20, 13, .2) 100%); }
   .steps article { gap: 20px; }
   .steps p { font-size: 12px; }
   .visit-image { aspect-ratio: 3 / 5; }
@@ -440,8 +442,8 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
   .work-record-view b { font-size: 18px; }
   .gallery-end { margin-top: 75px; font-size: 9px; }
   .appointment { min-height: 0; padding: 72px 0 56px; }
-  .appointment-backdrop { object-position: 70% bottom; opacity: .78; }
-  .appointment-wash { background: linear-gradient(180deg, rgba(4, 20, 13, .93) 0%, rgba(4, 20, 13, .88) 58%, rgba(4, 20, 13, .55) 100%); }
+  .appointment-backdrop { object-position: 88% bottom; opacity: .86; }
+  .appointment-wash { background: linear-gradient(180deg, #04140d 0%, #04140d 56%, rgba(4, 20, 13, .96) 68%, rgba(4, 20, 13, .67) 84%, rgba(4, 20, 13, .31) 100%); }
   .appointment-layout { grid-template-columns: 1fr; gap: 40px; }
   .steps article { gap: 20px; padding-bottom: 22px; margin-bottom: 22px; }
   .steps h3 { font-size: 29px; }
