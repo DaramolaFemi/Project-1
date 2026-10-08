@@ -306,10 +306,20 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
 .form-result summary { cursor: pointer; }
 .form-result pre { overflow-wrap: anywhere; padding-top: 16px; color: #d5c5b7; white-space: pre-wrap; font: 12px/1.8 var(--mono); }
 .copy-feedback { margin-top: 12px; }
-.footer { padding-top: 42px; padding-bottom: 25px; background: var(--ink); color: var(--chalk); }
-.footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 55px; }
-.footer-top > p { color: var(--muted); font-size: 13px; line-height: 1.8; }
-.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 18px; border-top: 1px solid var(--rule-dark); color: var(--muted); font-size: 9px; }
+.footer { position: relative; isolation: isolate; padding: clamp(80px, 9vw, 150px) 0 32px; overflow: hidden; background: #06170f url('/images/footer-botanical.webp') center / cover no-repeat; color: var(--chalk); }
+.footer::before { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(3,19,12,.34) 0%, rgba(3,19,12,.06) 70%, rgba(3,19,12,.2) 100%); content: ''; }
+.footer-inner { position: relative; }
+.footer-wordmark { display: inline-flex; align-items: flex-start; flex-direction: column; color: var(--chalk); font: 400 clamp(58px, 7.1vw, 108px)/.82 var(--serif); letter-spacing: .015em; }
+.footer-wordmark span { margin: 18px 0 0 .25em; color: #d4d8cd; font: 10px var(--sans); letter-spacing: .62em; }
+.footer-statement { margin: clamp(78px, 9vw, 148px) 0 clamp(48px, 5vw, 76px); color: var(--chalk); font: 400 clamp(36px, 4.3vw, 67px)/1.04 var(--serif); letter-spacing: -.035em; }
+.footer-conversation { display: grid; grid-template-columns: 1.75fr 1fr; grid-template-rows: auto auto; column-gap: 42px; min-height: 154px; padding: 30px clamp(26px, 4vw, 62px); border: 1px solid rgba(205,129,86,.86); background: linear-gradient(90deg, rgba(3,18,11,.67), rgba(3,18,11,.22)); color: var(--chalk); transition: border-color .25s, background .25s; }
+.footer-conversation:hover { border-color: var(--chalk); background: linear-gradient(90deg, rgba(44,76,50,.84), rgba(3,18,11,.26)); }
+.footer-marker { width: 10px; height: 10px; margin-bottom: 20px; background: var(--copper); }
+.footer-conversation-title { grid-row: 2; max-width: 650px; font: 400 clamp(37px, 4vw, 62px)/.96 var(--serif); letter-spacing: -.035em; }
+.footer-conversation-copy { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: #d4d8cd; font-size: 11px; line-height: 1.9; letter-spacing: .1em; }
+.footer-meta { display: grid; grid-template-columns: 1fr 1fr auto; align-items: center; gap: 26px; padding-top: 32px; border-top: 1px solid rgba(238,233,220,.33); margin-top: 54px; color: #bac4b7; font-size: 9px; }
+.footer-meta a { display: inline-flex; align-items: center; gap: 13px; color: var(--chalk); }
+.footer-meta a i { display: block; width: 8px; height: 8px; background: var(--copper); }
 
 .lightbox { position: fixed; inset: 0; width: min(1200px, 94vw); max-width: none; max-height: 94svh; padding: 0; border: 1px solid var(--rule-dark); background: var(--ink); color: var(--chalk); }
 .lightbox::backdrop { background: rgba(9, 15, 11, .9); }
@@ -521,11 +531,16 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
   .form-end { align-items: stretch; flex-direction: column; gap: 18px; padding: 24px 0; }
   .form-end > p { max-width: 300px; }
   .form-submit { width: 100%; }
-  .footer { padding-top: 32px; }
-  .footer-top { flex-wrap: wrap; gap: 24px; padding-bottom: 34px; }
-  .footer-top > p, .footer-top > .text-link { font-size: 11px; }
-  .footer-bottom { align-items: flex-start; flex-direction: column; gap: 10px; font-size: 8px; }
-  .footer-bottom > span:last-child { display: none; }
+  .footer { padding-top: 72px; padding-bottom: 30px; background-position: 67% center; }
+  .footer-wordmark { font-size: clamp(50px, 14vw, 69px); }
+  .footer-wordmark span { margin-top: 14px; font-size: 8px; letter-spacing: .52em; }
+  .footer-statement { margin: 74px 0 42px; font-size: clamp(36px, 10vw, 49px); }
+  .footer-conversation { display: flex; align-items: flex-start; flex-direction: column; min-height: 0; padding: 29px 26px 31px; }
+  .footer-marker { margin-bottom: 34px; }
+  .footer-conversation-title { margin-bottom: 28px; font-size: clamp(38px, 10.5vw, 52px); }
+  .footer-conversation-copy { color: #cbd2c7; font-size: 10px; }
+  .footer-meta { grid-template-columns: 1fr; align-items: start; gap: 15px; padding-top: 28px; margin-top: 42px; font-size: 9px; }
+  .footer-meta a { margin-top: 12px; }
   .lightbox { width: 94vw; max-height: 94svh; overflow: auto; }
   .lightbox-layout { display: block; min-height: 0; max-height: none; padding-top: 54px; }
   .lightbox-close { top: 12px; right: 20px; }
@@ -553,7 +568,6 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
   .specialty { min-height: 0; }
   .artist-info h3 { font-size: 34px; }
   .artist-info > p:not(.specialty) { font-size: 13px; }
-  .footer-top { align-items: flex-start; flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
