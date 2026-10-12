@@ -44,7 +44,7 @@ export default function Gallery() {
           reveal.fromTo(picture,
             { clipPath: 'inset(0 0 24% 0)' },
             { clipPath: 'inset(0 0 0% 0)', duration: .95, ease: 'power3.out' }, 0)
-            .fromTo(picture.querySelector('img'),
+            .fromTo(picture.querySelector('.work-tile-media'),
               { scale: 1.09 },
               { scale: 1, duration: 1.3, ease: 'power3.out' }, 0)
             .fromTo(caption,
@@ -80,7 +80,7 @@ export default function Gallery() {
               <span>{work.style}</span>
             </div>
             <button type="button" className="work-tile-image" onClick={event => open(index, event.currentTarget)} aria-label={`View ${work.title} by ${work.artist}, including artist and placement details`}>
-              <Image src={`/images/work-${work.image}.webp`} alt={work.alt} fill sizes="(max-width: 767px) 92vw, (max-width: 1050px) 45vw, (min-width: 1800px) 480px, 38vw" />
+              <span className="work-tile-media"><Image src={`/images/work-${work.image}.webp`} alt={work.alt} fill sizes={index === 0 ? '(max-width: 767px) 92vw, (min-width: 1800px) 750px, 48vw' : index < 3 ? '(max-width: 767px) 92vw, (min-width: 1800px) 375px, 24vw' : '(max-width: 767px) 92vw, (min-width: 1800px) 510px, 32vw'} /></span>
               <span className="work-tile-action mono" aria-hidden="true"><span>View the work</span><span>+</span></span>
             </button>
             <div className="work-tile-caption">
