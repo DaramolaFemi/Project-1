@@ -16,9 +16,9 @@ export default function Home() {
         <ArtistsSection />
         <section id="work" className="selected-work section-wrap">
           <div className="section-heading"><p className="section-label">On the skin</p><span className="mono">A small tattoo atlas / 01—06</span></div>
-          <div className="work-intro"><h2>Drawn for<br />a body.</h2><p>Every piece begins with a person, then finds the line only their body can hold. No flash sheets. No second copies.</p></div>
+          <div className="work-intro"><div><p className="work-intro-kicker mono">SIX ORIGINAL PIECES / ONE OF ONE</p><h2>Drawn for<br />a body<span className="period">.</span></h2></div><p>Every piece begins with a person, then finds the line only their body can hold. No flash sheets. No second copies.</p></div>
           <Gallery />
-          <p className="gallery-end mono">Open a tattoo note for its artist, placement, and the thinking behind it.</p>
+          <p className="gallery-end mono">Six different bodies, six different pieces. Select a photograph to see its artist, placement, and the thinking behind it.</p>
         </section>
         <section className="appointment" id="appointment">
           <Image className="appointment-backdrop" src="/images/process-desk-light.webp" alt="" fill sizes="100vw" />
