@@ -67,8 +67,8 @@ export default function Header() {
 
       const focusable = [
         brand.current,
-        toggle.current,
         ...Array.from(navigation.current?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []),
+        toggle.current,
       ].filter((element): element is HTMLAnchorElement | HTMLButtonElement => Boolean(element));
       if (!focusable.length) return;
 
