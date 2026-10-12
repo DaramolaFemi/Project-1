@@ -190,6 +190,7 @@ h1 { margin-left: -8px; font-size: clamp(96px, 11.2vw, 184px); line-height: .87;
 }
 .work-tile:nth-child(1) .work-tile-image { height: clamp(330px, 33vw, 474px); }
 .work-tile:nth-child(n+4) .work-tile-image { height: clamp(225px, 22vw, 310px); }
+.work-tile-media { position: absolute; inset: 0; display: block; overflow: hidden; will-change: transform; }
 .work-tile-image img { object-fit: cover; object-position: center; transition: transform .8s cubic-bezier(.18,.76,.15,1); }
 .work-tile-image:after {
   position: absolute;
