@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import './header.css';
 
 const destinations = [
-  { id: 'studio', label: 'Studio', number: '01' },
-  { id: 'artists', label: 'Artists', number: '02' },
-  { id: 'work', label: 'Work', number: '03' },
-  { id: 'visit', label: 'Visit', number: '04' },
+  { id: 'studio', label: 'Studio' },
+  { id: 'artists', label: 'Artists' },
+  { id: 'work', label: 'Work' },
+  { id: 'visit', label: 'Visit' },
 ] as const;
 
 export default function Header() {
@@ -105,9 +105,8 @@ export default function Header() {
               <span>EST. IN INK</span>
             </div>
             <div className="nav-links">
-              {destinations.map(({ id, label, number }) => (
+              {destinations.map(({ id, label }) => (
                 <a key={id} className="nav-link" href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={closeMenu}>
-                  <span className="nav-index mono" aria-hidden="true">{number}</span>
                   <span className="nav-name">{label}</span>
                 </a>
               ))}
