@@ -111,16 +111,16 @@ export default function Header() {
                 </a>
               ))}
             </div>
-            <a className="nav-book nav-book-mobile" href="#book" onClick={closeMenu}>
-              <span>Tell us your idea</span><span className="nav-book-mark" aria-hidden="true" />
+            <a className="nav-book nav-book-mobile" href="#book" aria-label="Start a tattoo enquiry" onClick={closeMenu}>
+              <span>Enquire</span><span className="nav-book-mark" aria-hidden="true" />
             </a>
             <div className="nav-mobile-foot mono" aria-hidden="true">
               <span>PERSONAL WORK, MADE WITH YOU.</span><span>BY APPOINTMENT</span>
             </div>
           </nav>
 
-          <a className="nav-book nav-book-desktop" href="#book" aria-current={active === 'book' ? 'location' : undefined}>
-            <span>Tell us your idea</span><span className="nav-book-mark" aria-hidden="true" />
+          <a className="nav-book nav-book-desktop" href="#book" aria-label="Start a tattoo enquiry" aria-current={active === 'book' ? 'location' : undefined}>
+            <span>Enquire</span><span className="nav-book-mark" aria-hidden="true" />
           </a>
           <button
             ref={toggle}
