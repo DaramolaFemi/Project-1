@@ -28,9 +28,9 @@
 .site-header.is-scrolled::after { opacity: .5; }
 .header-frame {
   display: grid;
-  grid-template-columns: minmax(155px,1fr) auto minmax(160px,1fr);
+  grid-template-columns: minmax(155px, 1fr) auto auto;
   align-items: center;
-  gap: clamp(16px,3vw,55px);
+  gap: clamp(24px,3.2vw,50px);
   width: min(100%,1800px);
   height: 104px;
   padding-inline: var(--gutter);
@@ -61,7 +61,7 @@
   position: relative;
   z-index: 1;
   display: block;
-  justify-self: center;
+  justify-self: end;
 }
 .nav-links { display: flex; align-items: center; gap: clamp(18px,2.3vw,36px); }
 .nav-link {
@@ -107,21 +107,24 @@
 .site-header .nav-book:hover,
 .site-header .nav-book:focus-visible,
 .site-header .nav-book[aria-current='location'] { color: #d8a07d; }
-.site-header .nav-book-desktop { position: relative; justify-self: end; width: max-content; }
-.site-header .nav-book-desktop::after {
-  position: absolute;
-  bottom: 7px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #c58a69;
-  content: '';
-  transform: scaleX(.35);
-  transform-origin: right;
-  transition: transform .3s cubic-bezier(.2,.78,.2,1);
+.site-header .nav-book-desktop {
+  position: relative;
+  justify-self: end;
+  min-width: 115px;
+  min-height: 46px;
+  padding: 12px 17px;
+  border: 1px solid rgba(238,233,220,.65);
+  background: rgba(7,23,16,.12);
+  color: #f2ede1;
+  transition: background-color .28s ease, color .28s ease, border-color .28s ease;
 }
-.site-header .nav-book-desktop:hover::after,
-.site-header .nav-book-desktop:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.site-header .nav-book-desktop:hover,
+.site-header .nav-book-desktop:focus-visible,
+.site-header .nav-book-desktop[aria-current='location'] {
+  border-color: #eee9dc;
+  background: #eee9dc;
+  color: #17211b;
+}
 .nav-book-mark { display: block; flex: none; width: 5px; height: 5px; border-radius: 50%; background: #ce8f6c; }
 /* Important: keep the mobile panel CTA out of desktop layout.
    The shared .site-header .nav-book selector otherwise overrides a bare display:none. */
@@ -135,9 +138,9 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1050px) {
-  .header-frame { grid-template-columns: minmax(139px,1fr) auto minmax(145px,1fr); gap: clamp(12px,2vw,24px); }
+  .header-frame { grid-template-columns: minmax(139px,1fr) auto auto; gap: clamp(16px,2.3vw,27px); }
   .nav-links { gap: clamp(13px,1.9vw,20px); }
-  .site-header .nav-book-desktop { gap: 9px; }
+  .site-header .nav-book-desktop { min-width: 100px; padding-inline: 12px; gap: 9px; }
   .site-header .wordmark { font-size: 26px; }
 }
 @media (max-width: 767px) {
@@ -272,7 +275,7 @@
   .nav-mobile-foot { padding-top: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-header, .header-frame, .navigation, .nav-link::after, .nav-link .nav-name, .nav-book-desktop::after, .menu-mark i {
+  .site-header, .header-frame, .navigation, .nav-link::after, .nav-link .nav-name, .menu-mark i {
     transition: none !important;
   }
 }
